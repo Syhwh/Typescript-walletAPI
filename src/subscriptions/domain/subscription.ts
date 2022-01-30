@@ -1,4 +1,4 @@
-export interface Subscriptions {
+export interface Subscription {
   id: number,
   code: string,
   user_id: number,
