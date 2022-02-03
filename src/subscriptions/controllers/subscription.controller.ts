@@ -16,6 +16,7 @@ export class SubscriptionController extends BaseController {
   @GET()
   public async all(req: Request, res: Response) {
     try {
+      console.log('controller ok');
       const subscriptions = await this.subscriptionService.all();
       const response = subscriptions.length > 0 ? subscriptions : 'no subs';
       res.status(200).json({
@@ -50,9 +51,9 @@ export class SubscriptionController extends BaseController {
   }
 
   @POST()
-  public async store(req: Request, res: Response) {
+  public async save(req: Request, res: Response) {
     try {
-      await this.subscriptionService.store({
+      await this.subscriptionService.save({
         user_id: req.body.user_id,
         code: req.body.code,
         amount: req.body.amount,

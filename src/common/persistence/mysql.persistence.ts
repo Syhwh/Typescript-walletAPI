@@ -4,7 +4,6 @@ import dotenv = require('dotenv');
 dotenv.config();
 
 const connector = createPool({
-
   host: process.env.db_mysql_host,
   user: process.env.db_mysql_user,
   password: process.env.db_mysql_password,
@@ -14,6 +13,7 @@ const connector = createPool({
   connectionLimit: 10,
   queueLimit: 0
 });
+console.log('Database passs ',process.env.db_mysql_host );
 
 connector.once('connection', () => console.log('Database connected'));
 

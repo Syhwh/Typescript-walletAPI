@@ -17,10 +17,10 @@ export class SubscriptionService {
     return await this.subscriptionRepository.find(id);
   }
 
-  public async store(entry: SubscriptionCreateDTO): Promise<void> {
+  public async save(entry: SubscriptionCreateDTO): Promise<void> {
     const originalEntry = await this.subscriptionRepository.findByUserAndCode(entry.user_id, entry.code);
     if (!originalEntry) {
-      await this.subscriptionRepository.store(entry as Subscription);
+      await this.subscriptionRepository.save(entry as Subscription);
     } else {
       throw new ApplicationException(' User subscription already exists');
     }

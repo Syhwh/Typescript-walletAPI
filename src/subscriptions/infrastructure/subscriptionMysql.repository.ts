@@ -31,11 +31,7 @@ export class SubscriptionMySQLRepository implements SubscriptionRepository {
     return rows[0] as Subscription;
   }
 
-
-  /**
-   * store
-   */
-  public async store(entry: Subscription): Promise<void> {
+  public async save(entry: Subscription): Promise<void> {
     const dateNow = new Date();
     await connector.execute(
       'INSERT INTO wallet_subscription(user_id,code, amount, cron, created_at) VALUES(?,?,?,?,?)',
