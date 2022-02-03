@@ -13,7 +13,6 @@ const connector = createPool({
   connectionLimit: 10,
   queueLimit: 0
 });
-console.log('Database passs ',process.env.db_mysql_host );
 
 connector.once('connection', () => console.log('Database connected'));
 

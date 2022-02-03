@@ -21,27 +21,14 @@ export class BalanceMySQLRepository implements BalanceRepository {
   }
   public async findByUserId(user_id: number): Promise<Balance | null> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-    console.log(' FIND BY USER', user_id);
     const [rows]: any[] = await connector.execute(
       'SELECT * FROM wallet_balance WHERE user_id = ? ',
       [user_id]
     );
-    console.log('row', rows);
+
     if (!rows[0]) return null;
     return rows[0] as Balance;
   }
-
-  // public async findByUserAndCode(user_id: number, code: string): Promise<Balance | null> {
-  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   const [rows]: any[] = await connector.execute(
-  //     'SELECT * FROM wallet_balance WHERE user_id = ? AND code = ? ',
-  //     [user_id, code]
-  //   );
-
-  //   if (!rows[0]) return null;
-  //   return rows[0] as Balance;
-  // }
 
   public async save(entry: Balance): Promise<void> {
     const dateNow = new Date();

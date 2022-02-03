@@ -16,7 +16,6 @@ export class SubscriptionController extends BaseController {
   @GET()
   public async all(req: Request, res: Response) {
     try {
-      console.log('controller ok');
       const subscriptions = await this.subscriptionService.all();
       const response = subscriptions.length > 0 ? subscriptions : 'no subs';
       res.status(200).json({
